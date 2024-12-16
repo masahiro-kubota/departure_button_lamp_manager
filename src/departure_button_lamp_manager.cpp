@@ -61,8 +61,9 @@ void DepartureButtonLampManager::lampManager(
   const uint16_t service_layer_state, const uint8_t control_layer_state)
 {
   if (
-    service_layer_state ==
-      autoware_state_machine_msgs::msg::StateMachine::STATE_WAITING_ENGAGE_INSTRUCTION &&
+    (service_layer_state ==
+      autoware_state_machine_msgs::msg::StateMachine::STATE_WAITING_ENGAGE_INSTRUCTION || 
+      service_layer_state == autoware_state_machine_msgs::msg::StateMachine::STATE_WAITING_CALL_PERMISSION) &&
     control_layer_state == autoware_state_machine_msgs::msg::StateMachine::AUTO) {
     publishLampState(true);
   } else {
