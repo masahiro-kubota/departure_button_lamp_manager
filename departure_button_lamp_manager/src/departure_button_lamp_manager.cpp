@@ -19,8 +19,7 @@ namespace departure_button_lamp_manager
 {
 
 DepartureButtonLampManager::DepartureButtonLampManager(
-  const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
-: Node("departure_button_lamp_manager", options)
+  const rclcpp::NodeOptions & options = 
 
 {
   // subscriber
