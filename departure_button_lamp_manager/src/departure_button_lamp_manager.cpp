@@ -52,7 +52,7 @@ void DepartureButtonLampManager::callbackStateMessage(
 void DepartureButtonLampManager::publishLampState(const bool value)
 {
   dio_ros_driver::msg::DIOPort msg;
-  msg.value = active_polarity_ ? value : !value;
+  msg.value = active_polarity_ ? value : value;
 
   pub_departure_button_lamp_->publish(msg);
 }
