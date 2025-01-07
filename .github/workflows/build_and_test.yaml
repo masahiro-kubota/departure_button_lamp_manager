@@ -22,10 +22,6 @@ jobs:
           fetch-depth: 1
           repository: ${{ github.event.pull_request.head.repo.full_name }}  
           ref: ${{ github.event.pull_request.head.ref }}  
-    
-
-      - name: Show disk space before the tasks
-        run: df -h
 
       - name: Remove exec_depend
         uses: autowarefoundation/autoware-github-actions/remove-exec-depend@v1
@@ -37,8 +33,8 @@ jobs:
       - name: Update package list and install dependencies
         run: |
           apt-get update -yqq
-          apt-get install -yqq python3-pip libboost-system-dev libboost-filesystem-dev libboost-thread-dev
-
+          apt-get install -yqq libboost-system-dev libboost-filesystem-dev libboost-thread-dev
+      
       - name: Build
         if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
         uses: autowarefoundation/autoware-github-actions/colcon-build@v1
@@ -49,12 +45,8 @@ jobs:
 
       - name: Test
         if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
-        id: test
         uses: autowarefoundation/autoware-github-actions/colcon-test@v1
         with:
           rosdistro: ${{ matrix.rosdistro }}
           target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
           build-depends-repos: ${{ matrix.build-depends-repos }}
-
-      - name: Show disk space after the tasks
-        run: df -h
