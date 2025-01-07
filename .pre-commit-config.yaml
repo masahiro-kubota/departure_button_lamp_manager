@@ -69,4 +69,3 @@ repos:
       - id: cpplint
         args: [--quiet]
         exclude: .cu
-
