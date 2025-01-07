@@ -9,12 +9,12 @@ jobs:
     if: ${{ github.event_name != 'push' || github.ref_name == github.event.repository.default_branch }}
     runs-on: ubuntu-22.04
     container:
-      image: ros:humble
-      options: --privileged
+      image: ${{ matrix.image }}
     strategy:
       fail-fast: false
       matrix:
         rosdistro: [humble]
+        image: ["ros:humble"]
         build-depends-repos: [build_depends.repos]
     steps:
       - name: Check out repository
