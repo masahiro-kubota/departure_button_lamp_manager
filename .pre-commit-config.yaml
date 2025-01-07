@@ -47,5 +47,3 @@ repos:
         args: [-w, -s, -i=4]
 
 exclude: .svg
-
-
