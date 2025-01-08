@@ -13,7 +13,7 @@ jobs:
 
       - name: Set git config
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
-          
+
       - name: Set option
         id: set-option
         run: |
