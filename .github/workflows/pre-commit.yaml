@@ -12,13 +12,8 @@ jobs:
 
       - name: Set git config
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
           
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.1
         with:
-          extra_args: --config .pre-commit-config.yaml
+          extra_args: --config .pre-commit-config.yaml --all-files
